@@ -16,4 +16,14 @@ public class ItemServiceImpl implements ItemService {
     public List<Item> getItemList() {
         return itemMapper.getItemList();
     }
+
+    @Override
+    public Item getItemById(int id) {
+        return itemMapper.getItemById(id);
+    }
+
+    @Override
+    public void updateItem(Item item) {
+        itemMapper.updateItem(item);
+    }
 }

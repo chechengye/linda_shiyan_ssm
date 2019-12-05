@@ -6,13 +6,16 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.weichuang.pojo.Item;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
 @Controller
+//@RequestMapping("item")
 public class ItemController {
 
     @Autowired
@@ -37,7 +40,26 @@ public class ItemController {
         List<Item> itemList = itemService.getItemList();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("itemList" , itemList);
-        modelAndView.setViewName("WEB-INF/jsp/itemList.jsp");
+        modelAndView.setViewName("itemList");
+        return modelAndView;
+    }
+
+    @RequestMapping("/itemEdit.do")
+    public ModelAndView updateItemUI(@RequestParam(value = "id" ,required = false) int xxx , boolean status){
+        Item item = itemService.getItemById(xxx);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("item" , item);
+        modelAndView.setViewName("editItem");
+        return modelAndView;
+    }
+
+    @RequestMapping("/updateitem.do")
+    public ModelAndView updateItem(Item item){
+        itemService.updateItem(item);
+        List<Item> itemList = itemService.getItemList();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("itemList" , itemList);
+        modelAndView.setViewName("itemList");
         return modelAndView;
     }
 

@@ -20,4 +20,9 @@
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.weichuang.mapper"></property>
     </bean>
+
+    <bean id="resourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="WEB-INF/jsp/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
 </beans>
