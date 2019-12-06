@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weichuang.mapper.BaseDictMapper">
+
+    <select id="getBaseDictListByCode" parameterType="String" resultType="BaseDict">
+        select bd.dict_id , bd.dict_type_code , bd.dict_type_name,bd.dict_item_name  from base_dict bd where bd.dict_type_code = #{code}
+    </select>
+</mapper>
